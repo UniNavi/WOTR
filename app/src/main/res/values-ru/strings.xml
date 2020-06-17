@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_message">Произошла ошибка</string>
+    <string name="empty_text">Пустое поле</string>
+    <string name="search">Поиск</string>
+    <string name="name_user">Ник:</string>
+    <string name="account_id">ID аккаунта:</string>
+    <string name="global_rating">Глобальный рейтинг</string>
+    <string name="last_battle_time">Время последнего боя:</string>
+    <string name="max_xp">Макс. заработанный опыт:</string>
+    <string name="value">-</string>
+    <string name="enter_nickname">Введите никнейм</string>
+</resources>

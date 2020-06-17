@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Status Bar (black text color)-->
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="ToolbarUser">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">300dp</item>
+<!--         <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>-->
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ToolbarInfoUser" parent="ToolbarUser">
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:elevation">6dp</item>
+    </style>
+
+</resources>

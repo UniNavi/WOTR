@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">WOTR</string>
+    <string name="error_message">Something goes wrong</string>
+    <string name="empty_text">Text is empty</string>
+    <string name="enter_nickname">Enter nickname</string>
+    <string name="search">Search</string>
+    <string name="name_user">Nickname</string>
+    <string name="account_id">Account ID</string>
+    <string name="global_rating">Global rating</string>
+    <string name="last_battle_time">Last battle time</string>
+    <string name="max_xp">Max XP</string>
+    <string name="value">-</string>
+</resources>

@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.InfoUserActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_info_user"
+        style="@style/ToolbarInfoUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_info_user"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="47dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/global_rating_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/global_rating"
+                app:layout_constraintEnd_toEndOf="@+id/global_rating_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/global_rating_count_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/global_rating_count_text_view" />
+
+            <TextView
+                android:id="@+id/last_battle_time_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/last_battle_time"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/common_values_text_view" />
+
+            <TextView
+                android:id="@+id/max_xp_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/max_xp"
+                app:layout_constraintStart_toStartOf="@+id/max_damage_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/max_damage_text_view" />
+
+            <TextView
+                android:id="@+id/battles_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Бои"
+                app:layout_constraintEnd_toEndOf="@+id/battles_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/battles_count_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/battles_count_text_view" />
+
+            <TextView
+                android:id="@+id/wins_precents_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Победы"
+                app:layout_constraintEnd_toEndOf="@+id/wins_percents_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/wins_percents_count_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/wins_percents_count_text_view" />
+
+            <TextView
+                android:id="@+id/avg_damage_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Средний урон"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/avg_damage_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/avg_damage_count_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/avg_damage_count_text_view" />
+
+            <TextView
+                android:id="@+id/avg_damage_blocked_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Средний заблокированный урон:"
+                app:layout_constraintStart_toStartOf="@+id/avg_damage_assisted_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/avg_damage_assisted_text_view" />
+
+            <TextView
+                android:id="@+id/max_damage_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Максимальный урон:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/record_values_text_view" />
+
+            <TextView
+                android:id="@+id/battle_avg_xp_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Средний опыт за бой:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avg_values_text_iew" />
+
+            <TextView
+                android:id="@+id/avg_damage_assisted_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Средний урон, нанесённый с вашей помощью"
+                app:layout_constraintStart_toStartOf="@+id/battle_avg_xp_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/battle_avg_xp_text_view" />
+
+            <TextView
+                android:id="@+id/hits_percents_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Попадания"
+                app:layout_constraintEnd_toEndOf="@+id/hits_percents_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/hits_percents_count_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/hits_percents_count_text_view" />
+
+            <TextView
+                android:id="@+id/survived_battles_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Выжил в боях:"
+                app:layout_constraintStart_toStartOf="@+id/last_battle_time_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/last_battle_time_text_view" />
+
+            <TextView
+                android:id="@+id/wins_battles_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Победы"
+                app:layout_constraintStart_toStartOf="@+id/survived_battles_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/survived_battles_text_view" />
+
+            <TextView
+                android:id="@+id/losses_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Поражения:"
+                app:layout_constraintStart_toStartOf="@+id/wins_battles_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/wins_battles_text_view" />
+
+            <TextView
+                android:id="@+id/draws_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Ничьи:"
+                app:layout_constraintStart_toStartOf="@+id/losses_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/losses_text_view" />
+
+            <TextView
+                android:id="@+id/shots_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Всего выстрелов:"
+                app:layout_constraintStart_toStartOf="@+id/draws_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/draws_text_view" />
+
+            <TextView
+                android:id="@+id/frags_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Уничтожено техники:"
+                app:layout_constraintStart_toStartOf="@+id/shots_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/shots_text_view" />
+
+            <TextView
+                android:id="@+id/hits_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Попадания:"
+                app:layout_constraintStart_toStartOf="@+id/frags_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/frags_text_view" />
+
+            <TextView
+                android:id="@+id/spotted_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Обнаружено противников:"
+                app:layout_constraintStart_toStartOf="@+id/hits_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/hits_text_view" />
+
+            <TextView
+                android:id="@+id/capture_points_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Очки захвата базы:"
+                app:layout_constraintStart_toStartOf="@+id/spotted_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/spotted_text_view" />
+
+            <TextView
+                android:id="@+id/damage_dealt_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Нанесено повреждений:"
+                app:layout_constraintStart_toStartOf="@+id/capture_points_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/capture_points_text_view" />
+
+            <TextView
+                android:id="@+id/damage_received_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Получено урона:"
+                app:layout_constraintStart_toStartOf="@+id/damage_dealt_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/damage_dealt_text_view" />
+
+            <TextView
+                android:id="@+id/direct_hits_received_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Количество полученных прямых попаданий:"
+                app:layout_constraintStart_toStartOf="@+id/damage_received_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/damage_received_text_view" />
+
+            <TextView
+                android:id="@+id/dropped_capture_points_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Очки защиты базы:"
+                app:layout_constraintStart_toStartOf="@+id/direct_hits_received_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/direct_hits_received_text_view" />
+
+            <TextView
+                android:id="@+id/xp_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Cуммарный опыт:"
+                app:layout_constraintStart_toStartOf="@+id/dropped_capture_points_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/dropped_capture_points_text_view" />
+
+            <TextView
+                android:id="@+id/avg_damage_assisted_radio_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Средний урон по вашим разведданным:"
+                app:layout_constraintStart_toStartOf="@+id/avg_damage_blocked_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/avg_damage_blocked_text_view" />
+
+            <TextView
+                android:id="@+id/avg_damage_assisted_track_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Средний урон по сбитой гусенице:"
+                app:layout_constraintStart_toStartOf="@+id/avg_damage_assisted_radio_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/avg_damage_assisted_radio_text_view" />
+
+            <TextView
+                android:id="@+id/nickname_count_text_view"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/value"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/global_rating_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/value"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="@+id/nickname_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/nickname_count_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/nickname_count_text_view" />
+
+            <TextView
+                android:id="@+id/last_battle_time_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/last_battle_time_text_view"
+                app:layout_constraintTop_toTopOf="@+id/last_battle_time_text_view" />
+
+            <TextView
+                android:id="@+id/max_xp_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/max_xp_text_view"
+                app:layout_constraintTop_toTopOf="@+id/max_xp_text_view" />
+
+            <TextView
+                android:id="@+id/battles_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/value"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/battles_image_view" />
+
+            <TextView
+                android:id="@+id/wins_percents_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/value"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wins_percents_image_view" />
+
+            <TextView
+                android:id="@+id/avg_damage_assisted_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/avg_damage_assisted_text_view"
+                app:layout_constraintTop_toTopOf="@+id/avg_damage_assisted_text_view" />
+
+            <TextView
+                android:id="@+id/avg_damage_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="28dp"
+                android:text="@string/value"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avg_damage_image_view" />
+
+            <TextView
+                android:id="@+id/avg_damage_blocked_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/avg_damage_blocked_text_view"
+                app:layout_constraintTop_toTopOf="@+id/avg_damage_blocked_text_view" />
+
+            <TextView
+                android:id="@+id/max_damage_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/max_damage_text_view"
+                app:layout_constraintTop_toTopOf="@+id/max_damage_text_view" />
+
+            <TextView
+                android:id="@+id/battle_avg_xp_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/battle_avg_xp_text_view"
+                app:layout_constraintTop_toTopOf="@+id/battle_avg_xp_text_view" />
+
+            <TextView
+                android:id="@+id/hits_percents_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/value"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hits_percents_image_view" />
+
+            <TextView
+                android:id="@+id/survived_battles_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/survived_battles_text_view"
+                app:layout_constraintTop_toTopOf="@+id/survived_battles_text_view" />
+
+            <TextView
+                android:id="@+id/wins_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/wins_battles_text_view"
+                app:layout_constraintTop_toTopOf="@+id/wins_battles_text_view" />
+
+            <TextView
+                android:id="@+id/losses_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/losses_text_view"
+                app:layout_constraintTop_toTopOf="@+id/losses_text_view" />
+
+            <TextView
+                android:id="@+id/draws_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/draws_text_view"
+                app:layout_constraintTop_toTopOf="@+id/draws_text_view" />
+
+            <TextView
+                android:id="@+id/shots_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/shots_text_view"
+                app:layout_constraintTop_toTopOf="@+id/shots_text_view" />
+
+            <TextView
+                android:id="@+id/frags_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/frags_text_view"
+                app:layout_constraintTop_toTopOf="@+id/frags_text_view" />
+
+            <TextView
+                android:id="@+id/hits_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/hits_text_view"
+                app:layout_constraintTop_toTopOf="@+id/hits_text_view" />
+
+            <TextView
+                android:id="@+id/spotted_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/spotted_text_view"
+                app:layout_constraintTop_toTopOf="@+id/spotted_text_view" />
+
+            <TextView
+                android:id="@+id/capture_points_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/capture_points_text_view"
+                app:layout_constraintTop_toTopOf="@+id/capture_points_text_view" />
+
+            <TextView
+                android:id="@+id/damage_dealt_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/damage_dealt_text_view"
+                app:layout_constraintTop_toTopOf="@+id/damage_dealt_text_view" />
+
+            <TextView
+                android:id="@+id/damage_received_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/damage_received_text_view"
+                app:layout_constraintTop_toTopOf="@+id/damage_received_text_view" />
+
+            <TextView
+                android:id="@+id/direct_hits_received_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/direct_hits_received_text_view"
+                app:layout_constraintTop_toTopOf="@+id/direct_hits_received_text_view" />
+
+            <TextView
+                android:id="@+id/dropped_capture_points_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/dropped_capture_points_text_view"
+                app:layout_constraintTop_toTopOf="@+id/dropped_capture_points_text_view" />
+
+            <TextView
+                android:id="@+id/xp_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/xp_text_view"
+                app:layout_constraintTop_toTopOf="@+id/xp_text_view" />
+
+            <TextView
+                android:id="@+id/avg_damage_assisted_radio_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/avg_damage_assisted_radio_text_view"
+                app:layout_constraintTop_toTopOf="@+id/avg_damage_assisted_radio_text_view" />
+
+            <TextView
+                android:id="@+id/avg_damage_assisted_track_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/value"
+                app:layout_constraintStart_toEndOf="@+id/avg_damage_assisted_track_text_view"
+                app:layout_constraintTop_toTopOf="@+id/avg_damage_assisted_track_text_view" />
+
+            <TextView
+                android:id="@+id/record_values_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Рекордные показатели"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/record_values_image_view"
+                app:layout_constraintTop_toTopOf="@+id/record_values_image_view" />
+
+            <TextView
+                android:id="@+id/avg_values_text_iew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Средние показатели"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/avg_values_image_view"
+                app:layout_constraintTop_toTopOf="@+id/avg_values_image_view" />
+
+            <TextView
+                android:id="@+id/common_values_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Общие показатели"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/common_values_image_view"
+                app:layout_constraintTop_toTopOf="@+id/common_values_image_view" />
+
+            <ImageView
+                android:id="@+id/battles_image_view"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:tint="#AEAEAE"
+                app:layout_constraintEnd_toEndOf="@+id/battles_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/battles_count_text_view"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_swords" />
+
+            <ImageView
+                android:id="@+id/wins_percents_image_view"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:tint="#AEAEAE"
+                app:layout_constraintEnd_toEndOf="@+id/wins_percents_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/wins_percents_count_text_view"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_finish" />
+
+            <ImageView
+                android:id="@+id/hits_percents_image_view"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="64dp"
+                android:tint="#AEAEAE"
+                app:layout_constraintEnd_toEndOf="@+id/hits_percents_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/hits_percents_count_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/global_rating_text_view"
+                app:srcCompat="@drawable/ic_target" />
+
+            <ImageView
+                android:id="@+id/avg_damage_image_view"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="58dp"
+                android:tint="#AEAEAE"
+                app:layout_constraintEnd_toEndOf="@+id/avg_damage_count_text_view"
+                app:layout_constraintStart_toStartOf="@+id/avg_damage_count_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/global_rating_text_view"
+                app:srcCompat="@drawable/ic_bullet" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="32dp"
+                android:background="#DADADA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hits_percents_text_view" />
+
+            <ImageView
+                android:id="@+id/common_values_image_view"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="32dp"
+                android:tint="#AEAEAE"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                app:srcCompat="@drawable/ic_info" />
+
+            <ImageView
+                android:id="@+id/avg_values_image_view"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="32dp"
+                android:tint="#AEAEAE"
+                app:layout_constraintTop_toBottomOf="@+id/xp_text_view"
+                app:srcCompat="@drawable/ic_mid"
+                tools:layout_editor_absoluteX="-4dp" />
+
+            <ImageView
+                android:id="@+id/record_values_image_view"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="32dp"
+                android:tint="#AEAEAE"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avg_damage_assisted_track_text_view"
+                app:srcCompat="@drawable/ic_up_arrow"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
