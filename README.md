@@ -1,5 +1,5 @@
 # WOTR
-Поиск игрока по нику и отображение его статистики по игре World of Tanks.
+Приложение показывающее статистику игрока, для оценки и анализа его эффективности в игре World of Tanks.
 
 Первый экран представляет форму поиска. Вводим ник игрока, далее получаем список.<br>
 Второй экран показывает детальную статистику выбранного игрока:
@@ -17,4 +17,4 @@
 - Room
 - MVVM
 
-![Alt-текст](https://sun9-76.userapi.com/TWO1-H6ll9IGZr7_TVSwYp7pqxFoMB_B1sXNuA/9EpApymdzA0.jpg "GooglePlay")
+![Alt-текст](https://play.google.com/store/apps/details?id=com.danilketov.wotr "GooglePlay")
