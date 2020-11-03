@@ -22,7 +22,7 @@ public class App extends Application {
     }
 
     public static DataRepository getDataRepository() {
-        if(dataRepository == null) {
+        if (dataRepository == null) {
             dataRepository = new DataRepository();
         }
 
@@ -30,14 +30,14 @@ public class App extends Application {
     }
 
     public static HttpClient getHttpClient() {
-        if(httpClient == null) {
+        if (httpClient == null) {
             httpClient = new HttpClient();
         }
         return httpClient;
     }
 
     public static AppDatabase getAppDatabase() {
-        if(appDatabase == null) {
+        if (appDatabase == null) {
             appDatabase = Room.databaseBuilder(INSTANCE, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
         }
         return appDatabase;

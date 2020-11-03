@@ -9,7 +9,6 @@ import com.danilketov.wotr.network.HttpClient;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DataRepository {
@@ -27,7 +26,8 @@ public class DataRepository {
             accounts = db.getUserDao().getAccounts(dbWildCardNickname);
         }
 
-        if(accounts == null) throw new IOException("Can't find repositories entities in db or api");
+        if (accounts == null)
+            throw new IOException("Can't find repositories entities in db or api");
 
         return accounts;
     }
@@ -42,7 +42,8 @@ public class DataRepository {
             userInfo = db.getUserDao().getUserInfo(Integer.parseInt(dbWildCardAccountId));
         }
 
-        if (userInfo == null) throw new IOException("Can't find repositories entities in db or api");
+        if (userInfo == null)
+            throw new IOException("Can't find repositories entities in db or api");
 
         return userInfo;
     }

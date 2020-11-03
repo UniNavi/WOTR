@@ -1,10 +1,7 @@
 package com.danilketov.wotr.fragment;
 
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -19,24 +16,18 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.danilketov.wotr.App;
 import com.danilketov.wotr.R;
-import com.danilketov.wotr.activity.UserActivity;
 import com.danilketov.wotr.entity.UserInfo;
 import com.danilketov.wotr.network.HttpClient;
 import com.danilketov.wotr.repository.DataRepository;
 import com.danilketov.wotr.viewmodel.InfoUserViewModel;
 
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class InfoUserFragment extends Fragment {
-
-    public static final String EXTRA_ACCOUNT_ID = "accountId";
 
     private Toolbar toolbar;
 
@@ -101,22 +92,16 @@ public class InfoUserFragment extends Fragment {
         }));
 
         viewModel.isException().observe(this, (isException) -> {
-            if(isException != null && isException) {
+            if (isException != null && isException) {
                 Toast.makeText(getActivity(), "Ошибка подключения", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        viewModel.isLoading().observe(this, (isLoading) -> {
-            if(isLoading != null) {
-
             }
         });
     }
 
     private void setupToolbar(View view) {
         toolbar = view.findViewById(R.id.toolbar_info_user);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Статистика игрока");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Статистика игрока");
 
         //Back button
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -197,7 +182,7 @@ public class InfoUserFragment extends Fragment {
         if (battlesP == 0) {
             winsPercentsTextView.setText("0%");
         } else {
-            double winsPercents = winsP*100/battlesP;
+            double winsPercents = winsP * 100 / battlesP;
             // Форматирование числа (знаки после запятой)
             String formattedWinsPercents = new DecimalFormat("#0.00").format(winsPercents);
             winsPercentsTextView.setText(formattedWinsPercents + "%");
@@ -233,7 +218,7 @@ public class InfoUserFragment extends Fragment {
         if (battlesA == 0) {
             avgDamageTextView.setText("0");
         } else {
-            int avgDamage = damageDealtA/battlesA;
+            int avgDamage = damageDealtA / battlesA;
             String abc = String.valueOf(avgDamage);
             avgDamageTextView.setText(abc);
         }

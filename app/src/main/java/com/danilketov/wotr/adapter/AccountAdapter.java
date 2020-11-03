@@ -25,7 +25,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
     }
 
     public interface OnInfoUserClickListener {
-        void onInfoUserClick (Account account);
+        void onInfoUserClick(Account account);
     }
 
     @NonNull

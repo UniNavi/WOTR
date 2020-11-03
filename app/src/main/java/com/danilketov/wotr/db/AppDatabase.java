@@ -7,7 +7,6 @@ import com.danilketov.wotr.entity.Account;
 import com.danilketov.wotr.entity.UserInfo;
 
 @Database(entities = {Account.class, UserInfo.class}, version = 1)
-// Доступ к базе данных и предоставление экземпляров DAO
 public abstract class AppDatabase extends RoomDatabase {
 
     public static String DATABASE_NAME = "wotr_database";

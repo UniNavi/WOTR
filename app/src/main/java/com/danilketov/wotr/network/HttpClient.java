@@ -9,7 +9,6 @@ import com.danilketov.wotr.entity.UserInfo;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -76,14 +75,11 @@ public class HttpClient {
 
     private String getResponse(String requestUrl) throws IOException {
 
-        // Отправление запроса
         Request request = new Request.Builder()
                 .url(requestUrl)
                 .build();
 
-        // Синхронный сетевой вызов
         Response responseRaw = client.newCall(request).execute();
-        // Обработка ответа
         if (responseRaw.isSuccessful()) {
             String response = responseRaw.body().string();
             return response;

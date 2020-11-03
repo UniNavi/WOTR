@@ -1,16 +1,13 @@
 package com.danilketov.wotr.viewmodel;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.danilketov.wotr.App;
-import com.danilketov.wotr.R;
 import com.danilketov.wotr.entity.UserInfo;
-import com.danilketov.wotr.fragment.InfoUserFragment;
 import com.danilketov.wotr.repository.DataRepository;
 
 import org.json.JSONException;
@@ -64,7 +61,7 @@ public class InfoUserViewModel extends ViewModel {
         protected void onPostExecute(UserInfo userInfo) {
             isLoading.setValue(false);
 
-            if (userInfo !=null) {
+            if (userInfo != null) {
                 repository.setValue(userInfo);
             } else {
                 isNetworkException.setValue(true);

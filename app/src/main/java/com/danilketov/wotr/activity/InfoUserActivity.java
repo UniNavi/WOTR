@@ -1,11 +1,9 @@
 package com.danilketov.wotr.activity;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
 
 import com.danilketov.wotr.R;
 import com.danilketov.wotr.fragment.InfoUserFragment;
@@ -22,7 +20,7 @@ public class InfoUserActivity extends AppCompatActivity {
         String accountId = getIntent().getStringExtra(EXTRA_ACCOUNT_ID);
 
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        if(fragment == null) throw new NullPointerException("Fragment не найден");
+        if (fragment == null) throw new NullPointerException("Fragment не найден");
 
         InfoUserFragment infoUserFragment = (InfoUserFragment) fragment;
         infoUserFragment.updateData(accountId);

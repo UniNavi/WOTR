@@ -15,12 +15,10 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
 
-// Подготавливает данные для пользовательского интерфейса
 public class AccountViewModel extends ViewModel {
 
     private DataRepository dataRepository = App.getDataRepository();
 
-    // LiveData - класс, хранящий данные и сообщающий о их изменениях, кто на них подпишется
     private MutableLiveData<List<Account>> account = new MutableLiveData<>();
     private MutableLiveData<Boolean> isNetworkException = new MutableLiveData<>();
     private MutableLiveData<Boolean> isQueryValidationException = new MutableLiveData<>();
@@ -43,7 +41,7 @@ public class AccountViewModel extends ViewModel {
     }
 
     public void searchUsers(String query) {
-        if(query.isEmpty() || query.contains(" ")) {
+        if (query.isEmpty() || query.contains(" ")) {
             isQueryValidationException.setValue(true);
         } else {
             new GetUserAsyncTask().execute(query);
@@ -71,7 +69,7 @@ public class AccountViewModel extends ViewModel {
         protected void onPostExecute(List<Account> result) {
             isLoading.setValue(false);
 
-            if(result != null) {
+            if (result != null) {
                 account.setValue(result);
             } else {
                 isNetworkException.setValue(true);
