@@ -11,10 +11,17 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class DataRepository {
 
     private HttpClient httpClient = App.getHttpClient();
     private AppDatabase db = App.getAppDatabase();
+
+    @Inject
+    public DataRepository() {
+
+    }
 
     public List<Account> getAccounts(String searchNickname) throws IOException, JSONException {
         List<Account> accounts = null;

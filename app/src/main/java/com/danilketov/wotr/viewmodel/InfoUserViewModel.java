@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.danilketov.wotr.App;
 import com.danilketov.wotr.entity.UserInfo;
 import com.danilketov.wotr.repository.DataRepository;
 
@@ -14,14 +13,20 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
+
 public class InfoUserViewModel extends ViewModel {
 
-    private DataRepository dataRepository = App.getDataRepository();
+    private DataRepository dataRepository;
 
     private MutableLiveData<UserInfo> repository = new MutableLiveData<>();
     private MutableLiveData<Boolean> isNetworkException = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
 
+    @Inject
+    public InfoUserViewModel(DataRepository dataRepository) {
+        this.dataRepository = dataRepository;
+    }
 
     public LiveData<UserInfo> getRepository() {
         return repository;

@@ -18,12 +18,16 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.danilketov.wotr.App;
 import com.danilketov.wotr.R;
 import com.danilketov.wotr.activity.InfoUserActivity;
 import com.danilketov.wotr.activity.UserActivity;
 import com.danilketov.wotr.adapter.AccountAdapter;
+import com.danilketov.wotr.di.ViewModelFactory;
 import com.danilketov.wotr.entity.Account;
 import com.danilketov.wotr.viewmodel.AccountViewModel;
+
+import javax.inject.Inject;
 
 public class UserFragment extends Fragment {
 
@@ -38,6 +42,9 @@ public class UserFragment extends Fragment {
     private UserActivity userActivity;
 
     private AccountViewModel viewModel;
+
+    @Inject
+    ViewModelFactory viewModelFactory;
 
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -54,6 +61,8 @@ public class UserFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_user, container, false);
 
+        App.getAppComponent().inject(this);
+
         initView(view);
         initRecyclerView(view);
         initViewModel();
@@ -62,7 +71,7 @@ public class UserFragment extends Fragment {
     }
 
     private void initViewModel() {
-        viewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(AccountViewModel.class);
 
         viewModel.getAccount().observe(this, accounts -> {
             if (accounts != null) {

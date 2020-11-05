@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.danilketov.wotr.App;
 import com.danilketov.wotr.R;
+import com.danilketov.wotr.di.ViewModelFactory;
 import com.danilketov.wotr.entity.UserInfo;
 import com.danilketov.wotr.network.HttpClient;
 import com.danilketov.wotr.repository.DataRepository;
@@ -26,6 +27,8 @@ import org.jetbrains.annotations.NotNull;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.inject.Inject;
 
 public class InfoUserFragment extends Fragment {
 
@@ -66,13 +69,17 @@ public class InfoUserFragment extends Fragment {
 
     private InfoUserViewModel viewModel;
 
+    @Inject
+    ViewModelFactory viewModelFactory;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_info_user, container, false);
 
-        setupToolbar(view);
+        App.getAppComponent().inject(this);
 
+        setupToolbar(view);
         initView(view);
 
         httpClient = new HttpClient();
@@ -84,7 +91,7 @@ public class InfoUserFragment extends Fragment {
     }
 
     private void initViewModel() {
-        viewModel = ViewModelProviders.of(this).get(InfoUserViewModel.class);
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(InfoUserViewModel.class);
         viewModel.getRepository().observe(this, (userInfo -> {
             if (userInfo != null) {
                 displayUserInfo(userInfo);

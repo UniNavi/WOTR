@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.danilketov.wotr.App;
 import com.danilketov.wotr.entity.Account;
 import com.danilketov.wotr.repository.DataRepository;
 
@@ -15,14 +14,21 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class AccountViewModel extends ViewModel {
 
-    private DataRepository dataRepository = App.getDataRepository();
+    private DataRepository dataRepository;
 
     private MutableLiveData<List<Account>> account = new MutableLiveData<>();
     private MutableLiveData<Boolean> isNetworkException = new MutableLiveData<>();
     private MutableLiveData<Boolean> isQueryValidationException = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
+
+    @Inject
+    public AccountViewModel(DataRepository dataRepository) {
+        this.dataRepository = dataRepository;
+    }
 
     public LiveData<List<Account>> getAccount() {
         return account;
