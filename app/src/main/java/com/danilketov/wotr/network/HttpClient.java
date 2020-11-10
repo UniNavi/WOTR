@@ -11,10 +11,14 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+@Singleton
 public class HttpClient {
 
     private static final String ACCOUNT_URL = "https://api.worldoftanks.ru/wot/account/list/";
@@ -28,6 +32,11 @@ public class HttpClient {
     private final JsonParser jsonParser = new JsonParser();
     private OkHttpClient client = new OkHttpClient.Builder()
             .build();
+
+    @Inject
+    public HttpClient() {
+
+    }
 
     public List<Account> getUserAccount(String searchNickname) throws IOException, JSONException {
 

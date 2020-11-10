@@ -18,8 +18,6 @@ import com.danilketov.wotr.App;
 import com.danilketov.wotr.R;
 import com.danilketov.wotr.di.ViewModelFactory;
 import com.danilketov.wotr.entity.UserInfo;
-import com.danilketov.wotr.network.HttpClient;
-import com.danilketov.wotr.repository.DataRepository;
 import com.danilketov.wotr.viewmodel.InfoUserViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -63,10 +61,6 @@ public class InfoUserFragment extends Fragment {
     private TextView avgDamageAssistedRadioTextView;
     private TextView avgDamageAssistedTrackTextView;
 
-    private HttpClient httpClient;
-    private DataRepository dataRepository;
-    private UserInfo userInfo;
-
     private InfoUserViewModel viewModel;
 
     @Inject
@@ -81,9 +75,6 @@ public class InfoUserFragment extends Fragment {
 
         setupToolbar(view);
         initView(view);
-
-        httpClient = new HttpClient();
-        dataRepository = App.getDataRepository();
 
         initViewModel();
 

@@ -1,6 +1,5 @@
 package com.danilketov.wotr.repository;
 
-import com.danilketov.wotr.App;
 import com.danilketov.wotr.db.AppDatabase;
 import com.danilketov.wotr.entity.Account;
 import com.danilketov.wotr.entity.UserInfo;
@@ -15,12 +14,13 @@ import javax.inject.Inject;
 
 public class DataRepository {
 
-    private HttpClient httpClient = App.getHttpClient();
-    private AppDatabase db = App.getAppDatabase();
+    private HttpClient httpClient;
+    private AppDatabase db;
 
     @Inject
-    public DataRepository() {
-
+    public DataRepository(HttpClient httpClient, AppDatabase db) {
+        this.httpClient = httpClient;
+        this.db = db;
     }
 
     public List<Account> getAccounts(String searchNickname) throws IOException, JSONException {
