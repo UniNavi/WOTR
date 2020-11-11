@@ -16,5 +16,6 @@
 - OkHttp
 - Room
 - MVVM
+- Dagger
 
 [![GooglePlay](https://sun9-76.userapi.com/TWO1-H6ll9IGZr7_TVSwYp7pqxFoMB_B1sXNuA/9EpApymdzA0.jpg)](https://play.google.com/store/apps/details?id=com.danilketov.wotr)
