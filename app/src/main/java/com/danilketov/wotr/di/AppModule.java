@@ -7,6 +7,9 @@ import androidx.room.Room;
 import com.danilketov.wotr.db.AppDatabase;
 import com.danilketov.wotr.network.HttpClient;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -37,5 +40,12 @@ public class AppModule {
     @Singleton
     public AppDatabase providesAppDatabase(Context context) {
         return Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
+    }
+
+    @Provides
+    @Singleton
+    Executor providesExecutor() {
+        int numberOfCores = Runtime.getRuntime().availableProcessors();
+        return Executors.newFixedThreadPool(numberOfCores);
     }
 }

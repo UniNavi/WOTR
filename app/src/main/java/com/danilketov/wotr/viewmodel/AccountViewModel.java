@@ -1,7 +1,5 @@
 package com.danilketov.wotr.viewmodel;
 
-import android.os.AsyncTask;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,12 +11,14 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
 public class AccountViewModel extends ViewModel {
 
     private DataRepository dataRepository;
+    private Executor executor;
 
     private MutableLiveData<List<Account>> account = new MutableLiveData<>();
     private MutableLiveData<Boolean> isNetworkException = new MutableLiveData<>();
@@ -26,8 +26,9 @@ public class AccountViewModel extends ViewModel {
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
 
     @Inject
-    public AccountViewModel(DataRepository dataRepository) {
+    public AccountViewModel(DataRepository dataRepository, Executor executor) {
         this.dataRepository = dataRepository;
+        this.executor = executor;
     }
 
     public LiveData<List<Account>> getAccount() {
@@ -50,36 +51,22 @@ public class AccountViewModel extends ViewModel {
         if (query.isEmpty() || query.contains(" ")) {
             isQueryValidationException.setValue(true);
         } else {
-            new GetUserAsyncTask().execute(query);
+            requestUsers(query);
         }
     }
 
-    private class GetUserAsyncTask extends AsyncTask<String, Integer, List<Account>> {
-
-        @Override
-        protected void onPreExecute() {
-            isLoading.setValue(true);
-        }
-
-        @Override
-        protected List<Account> doInBackground(String... queries) {
+    private void requestUsers(String query) {
+        isLoading.setValue(true);
+        executor.execute(() -> {
             try {
-                return dataRepository.getAccounts(queries[0]);
+                List<Account> result = dataRepository.getAccounts(query);
+                account.postValue(result);
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
-                return null;
+                isNetworkException.postValue(true);
+            } finally {
+                isLoading.postValue(false);
             }
-        }
-
-        @Override
-        protected void onPostExecute(List<Account> result) {
-            isLoading.setValue(false);
-
-            if (result != null) {
-                account.setValue(result);
-            } else {
-                isNetworkException.setValue(true);
-            }
-        }
+        });
     }
 }

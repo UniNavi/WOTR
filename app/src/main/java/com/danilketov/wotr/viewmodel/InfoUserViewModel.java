@@ -1,7 +1,5 @@
 package com.danilketov.wotr.viewmodel;
 
-import android.os.AsyncTask;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -12,20 +10,23 @@ import com.danilketov.wotr.repository.DataRepository;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
 public class InfoUserViewModel extends ViewModel {
 
     private DataRepository dataRepository;
+    private Executor executor;
 
     private MutableLiveData<UserInfo> repository = new MutableLiveData<>();
     private MutableLiveData<Boolean> isNetworkException = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
 
     @Inject
-    public InfoUserViewModel(DataRepository dataRepository) {
+    public InfoUserViewModel(DataRepository dataRepository, Executor executor) {
         this.dataRepository = dataRepository;
+        this.executor = executor;
     }
 
     public LiveData<UserInfo> getRepository() {
@@ -41,37 +42,19 @@ public class InfoUserViewModel extends ViewModel {
     }
 
     public void updateData(String accountId) {
-        new GetUserInfoAsyncTask().execute(Integer.valueOf(accountId));
-    }
-
-    private class GetUserInfoAsyncTask extends AsyncTask<Integer, Void, UserInfo> {
-
-        @Override
-        protected void onPreExecute() {
-            isLoading.setValue(true);
-        }
-
-        @Override
-        protected UserInfo doInBackground(Integer... params) {
-            int accountId = params[0];
+        isLoading.setValue(true);
+        executor.execute(() -> {
             try {
-                return dataRepository.getUserInfo(accountId);
+                UserInfo result = dataRepository.getUserInfo(Integer.parseInt(accountId)); // Почему accountId нужно явно приводить
+                repository.postValue(result);
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
-                return null;
+                isNetworkException.postValue(true);
+            } finally {
+                isLoading.postValue(false);
             }
-        }
-
-        @Override
-        protected void onPostExecute(UserInfo userInfo) {
-            isLoading.setValue(false);
-
-            if (userInfo != null) {
-                repository.setValue(userInfo);
-            } else {
-                isNetworkException.setValue(true);
-            }
-        }
+        });
     }
-
 }
+
+
