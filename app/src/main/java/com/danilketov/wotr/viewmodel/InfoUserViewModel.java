@@ -45,7 +45,7 @@ public class InfoUserViewModel extends ViewModel {
         isLoading.setValue(true);
         executor.execute(() -> {
             try {
-                UserInfo result = dataRepository.getUserInfo(Integer.parseInt(accountId)); // Почему accountId нужно явно приводить
+                UserInfo result = dataRepository.getUserInfo(Integer.parseInt(accountId));
                 repository.postValue(result);
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
